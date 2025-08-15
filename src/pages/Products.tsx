@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
 import { fetchProducts, createProduct, updateProduct, deleteProduct, fetchCategories, fetchSuppliers } from '../services/api'
-import DashboardLayout from '../components/DashboardLayout'
+
 import StatsCard from '../components/StatsCard'
 import EmptyState from '../components/EmptyState'
 import ProductFormModal from '../components/ProductFormModal'

@@ -44,7 +44,7 @@ export const filterAndSortProducts = (
         filtered = filtered.filter(product =>
             product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             product.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            product.supplier.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (typeof product.supplier === 'string' ? product.supplier.toLowerCase() : product.supplier?.name?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
             product.description?.toLowerCase().includes(searchTerm.toLowerCase())
         )
     }

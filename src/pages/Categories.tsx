@@ -1,5 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
-import DashboardLayout from '../components/DashboardLayout'
+import { useEffect, useState } from 'react'
 import StatsCard from '../components/StatsCard'
 import SearchBar from '../components/SearchBar'
 import EmptyState from '../components/EmptyState'

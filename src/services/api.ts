@@ -1,6 +1,5 @@
-import type { Product, ProductFormData } from '../types/product';
+import type { ProductFormData } from '../types/product';
 import type { Supplier } from '../types/supplier';
-import { isTokenExpired } from '../utils/tokenUtils';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 

@@ -7,10 +7,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss()
-  ],
-  server: {
-    proxy: {
-      '/api': 'http://localhost:3000'
-    }
-  }
+  ]
+  // Proxy removido para usar variables de entorno
+  // server: {
+  //   proxy: {
+  //     '/api': 'http://localhost:3000'
+  //   }
+  // }
 })

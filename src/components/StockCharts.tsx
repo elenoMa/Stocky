@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Label, Sector, BarChart, Bar, Tooltip as RechartsTooltip, LabelList } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, BarChart, Bar, Tooltip as RechartsTooltip, LabelList } from 'recharts'
 import { useMemo, useState } from 'react'
 import type { Movement } from '../types/movement'
 import type { Product } from '../types/product'
@@ -14,10 +14,7 @@ interface StockChartsProps {
     suppliers?: any[]
 }
 
-function getPercent(value: number, total: number) {
-    if (!total || isNaN(value) || isNaN(total)) return '0%';
-    return `${((value / total) * 100).toFixed(1)}%`;
-}
+
 
 export default function StockCharts({ products = [], categories = [], movements = [], suppliers = [] }: StockChartsProps) {
     // Estado del filtro
@@ -143,7 +140,7 @@ export default function StockCharts({ products = [], categories = [], movements 
     // Label externo personalizado para el gráfico de torta
     function renderCustomizedLabel(props: any) {
         const {
-            cx, cy, midAngle, innerRadius, outerRadius, percent, name, lowStock, highStock
+            cx, cy, midAngle, outerRadius, percent, name, lowStock, highStock
         } = props;
         const RADIAN = Math.PI / 180;
         // Posición fuera del gráfico

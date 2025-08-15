@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
       if (isTokenExpired(token || '')) {
         // Intentar refrescar el token
         try {
-          const res = await fetch('/api/auth/refresh', {
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/refresh`, {
             method: 'POST',
             credentials: 'include',
           });

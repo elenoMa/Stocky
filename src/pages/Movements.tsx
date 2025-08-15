@@ -1,6 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { fetchMovements, fetchRecentMovements, createMovement, fetchCategories, fetchMovementsTotal } from '../services/api'
-import DashboardLayout from '../components/DashboardLayout'
+import { fetchMovements, fetchRecentMovements, createMovement, fetchCategories } from '../services/api'
 import StatsCard from '../components/StatsCard'
 import EmptyState from '../components/EmptyState'
 import FilterPanel from '../components/FilterPanel'
@@ -72,19 +71,7 @@ const Movements = () => {
         return map
     }, [categories])
 
-    // Obtener nombres únicos de categorías presentes en movimientos
-    const movementCategoryNames = useMemo(() => {
-        const names = new Set<string>()
-        movements.forEach(m => {
-            const found = categories.find(cat => cat._id === m.category)
-            if (found) {
-                names.add(found.name)
-            } else {
-                names.add(m.category)
-            }
-        })
-        return Array.from(names)
-    }, [movements, categories])
+
 
     if (loading) {
         return <PageTransition variant="slideLeft"><Loader message="Cargando movimientos..." /></PageTransition>

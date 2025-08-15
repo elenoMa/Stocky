@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import DashboardLayout from "../components/DashboardLayout";
+
 import StockAlertsPanel from "../components/StockAlertsPanel";
 import QuickStockOutForm from "../components/QuickStockOutForm";
 import StockCharts from "../components/StockCharts";
@@ -75,13 +75,12 @@ const mockDashboardData = {
 }
 
 const Dashboard = () => {
-    const [selectedPeriod, setSelectedPeriod] = useState<'today' | 'week' | 'month'>('week')
-    const [showNotifications, setShowNotifications] = useState(false)
+
     const [products, setProducts] = useState<Product[]>([])
     const [movements, setMovements] = useState([])
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
+
     const [showProductModal, setShowProductModal] = useState(false);
     const [showQuickMovementModal, setShowQuickMovementModal] = useState(false);
     const [modalLoading, setModalLoading] = useState(false);
@@ -108,7 +107,7 @@ const Dashboard = () => {
     // Hoist loadData so it can be used by modals and useEffect
     const loadData = async () => {
         setLoading(true)
-        setError(null)
+
         try {
             const productsData = await fetchProducts()
             const movementsData = await fetchMovements()
@@ -142,7 +141,7 @@ const Dashboard = () => {
                 inventoryAccuracy: null // No disponible
             });
         } catch (err: any) {
-            setError('Error al cargar datos del dashboard')
+            console.error('Error al cargar datos del dashboard')
         } finally {
             setLoading(false)
         }
@@ -197,14 +196,7 @@ const Dashboard = () => {
         return colors[type as keyof typeof colors] || 'bg-gray-50 border-gray-200'
     }
 
-    const getPriorityColor = (priority: string) => {
-        const colors = {
-            high: 'text-red-600 bg-red-100',
-            medium: 'text-yellow-600 bg-yellow-100',
-            low: 'text-green-600 bg-green-100'
-        }
-        return colors[priority as keyof typeof colors] || 'text-gray-600 bg-gray-100'
-    }
+
 
     const handleQuickAction = (action: string) => {
         if (action === 'add-product') {
@@ -294,7 +286,7 @@ const Dashboard = () => {
             ) : (
                 <div>
                     {/* Panel de notificaciones */}
-                    {showNotifications && (
+                    {false && (
                         <div className="mb-6 bg-white rounded-lg shadow border p-4">
                             <h3 className="text-lg font-semibold mb-3">🔔 Notificaciones</h3>
                             <div className="space-y-2">
